@@ -1,0 +1,103 @@
+@import "base/variables";
+@import "base/mixins";
+@import "base/typography";
+@import "vendor/normalize";
+
+h1, h2, h3, h4, p {
+    padding: 0;
+    margin: 0;
+}
+
+html, body {
+    font-family: 'Proxima Nova';
+}
+
+.wrp {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.doors {
+    background: url(../img/background.png) no-repeat center center;
+    background-size: contain;
+    height: 890px;
+    display: flex;
+    flex-direction: column;
+    &-head {
+        padding-top: 70px;
+        padding-bottom: 70px;
+        text-shadow: 0 3px 3px rgba(14, 12, 13, 0.23);
+        color: #ffffff;
+        font-family: "Myriad Pro - Bold Semi Cn";
+        font-size: 74px;
+        font-weight: 400;
+        // Text style for "КВАРТИРЫ"
+        font-family: "Myriad Pro - Bold Semi Cn";
+        font-weight: 600;
+        span {
+            display: block;
+            text-align: center;
+        }
+
+    }
+    &-semibold {
+        font-family: "Myriad Pro - Black Semi Cn";
+        font-weight: 400;
+        font-size: 51px;
+    }
+
+
+    &-item {
+        position: relative;
+        overflow: hidden;
+        height: 404px;
+        width: 156px;
+        top: 11px;
+        perspective: 1000px;
+        perspective-origin: center left;
+    }
+
+    &-wrapper {
+        padding-left: 111px;
+        padding-right: 105px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+    }
+}
+
+.door {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    transition: 0.3s ease-in-out;
+    display: inline-block;
+    transform-style: preserve-3d;
+    transform-origin: left center;
+    &:hover {
+        transform: rotate3d(0, 1, 0, 20deg);
+    }
+    img {
+        width: 100%;
+    }
+    &-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+    &-item {
+        position: absolute;
+        top: 350px;
+        left: -500px;
+        transition: 1s ease-in-out;
+        &_2 {
+            top: 400px;
+        }
+    }
+}
