@@ -9,7 +9,7 @@ h1, h2, h3, h4, p {
 }
 
 html, body {
-    font-family: 'Proxima Nova';
+    font-family: 'Myriad Pro - Light Semi Cn', sans-serif;
 }
 
 .wrp {
@@ -23,16 +23,17 @@ html, body {
     height: 890px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     &-head {
         padding-top: 70px;
         padding-bottom: 70px;
         text-shadow: 0 3px 3px rgba(14, 12, 13, 0.23);
         color: #ffffff;
-        font-family: "Myriad Pro - Bold Semi Cn";
+        font-family: "Myriad Pro - Bold Semi Cn", sans-serif;
         font-size: 74px;
         font-weight: 400;
         // Text style for "КВАРТИРЫ"
-        font-family: "Myriad Pro - Bold Semi Cn";
+        font-family: "Myriad Pro - Bold Semi Cn", sans-serif;
         font-weight: 600;
         span {
             display: block;
@@ -41,7 +42,7 @@ html, body {
 
     }
     &-semibold {
-        font-family: "Myriad Pro - Black Semi Cn";
+        font-family: "Myriad Pro - Black Semi Cn", sans-serif;
         font-weight: 400;
         font-size: 51px;
     }
@@ -55,6 +56,12 @@ html, body {
         top: 11px;
         perspective: 1000px;
         perspective-origin: center left;
+        &:hover .door{
+            transform: rotate3d(0, 1, 0, 20deg);
+        }
+        &-wrapper {
+            position: relative;
+        }
     }
 
     &-wrapper {
@@ -64,8 +71,67 @@ html, body {
         align-items: flex-start;
         justify-content: space-between;
         position: relative;
-        overflow: hidden;
+        
         height: 100%;
+    }
+
+    &-inn-item {
+        position: absolute;
+        z-index: 90;
+        &_1 {
+            bottom: 55%;
+            left: calc(100% - 111px);
+            width: 0px;
+            transition: 0.3s ease-in-out;
+            //width: 150px;
+            overflow: hidden;
+            &.visible {
+                width: 150px;
+            }
+            img {
+                width: 150px;
+            }
+        }
+        &_2 {
+            bottom: -70px;
+            width: 0;
+            overflow: hidden;
+            transition: 0.3s ease-in-out;
+            left: calc(100% - 141px);
+            &.visible {
+                width: 196px;
+            }
+            img {
+                width: 196px;
+            }
+        }
+        &_3 {
+            bottom: -73px;
+            right: -1px;
+            width: 0px;
+            transition: 0.3s ease-in-out;
+            overflow: hidden;
+            &.visible {
+                width: 97px;
+            }
+            img {
+                width: 97px;
+            }
+        }
+        &_4 {
+            top: 10px;
+            right: -38px;
+            height: 0px;
+            width: 86px;
+            transition: 0.3s ease-in-out;
+            overflow: hidden;
+            &.visible {
+                height: 100%;
+            }
+            img {
+                width: 86px;
+            }
+        }
     }
 }
 
@@ -79,9 +145,6 @@ html, body {
     display: inline-block;
     transform-style: preserve-3d;
     transform-origin: left center;
-    &:hover {
-        transform: rotate3d(0, 1, 0, 20deg);
-    }
     img {
         width: 100%;
     }
@@ -100,4 +163,57 @@ html, body {
             top: 400px;
         }
     }
+    &.opened {
+        transform: rotate3d(0, 1, 0, 75deg) !important;
+    }
+    &-description {
+        position: absolute;
+        top: -20px;
+        left: calc(100% + 27px);
+        z-index: 110;
+        width: 250px;
+        padding: 20px;
+        background: #FFFFFF;
+        opacity: 0.76;
+        font-size: 15px;
+        display: none;
+        &.active {
+            display: block;
+        }
+        &_left {
+            left: unset;
+            right: calc(100% + 27px);
+        }
+        &__close {
+            position: absolute;
+            width: 9px;
+            height: 9px;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            &:before, &:after {
+                content: '';
+                display: block;
+                transform-style: flat;
+                transform-origin: left center;
+                background: #000000;
+                height: 1px;
+                width: 11px;
+            }
+            &:before {
+                transform: rotate(45deg);
+            }
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+.text-bold {
+    font-weight: 600;
 }
